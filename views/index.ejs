@@ -1,0 +1,134 @@
+
+<!-- include header -->
+    <%- include('include/_header') %>
+<!-- /include header -->
+
+    <!-- Main Site -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="chartContainer1">
+        <canvas id="myChart1"></canvas>
+    </div>  
+    <!-- <div class="chartContainer2">
+      <canvas id="myChart2"></canvas>
+    </div> -->
+    
+      <script>
+        let myChart1 = document.getElementById('myChart1').getContext('2d');
+    
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 16;
+        Chart.defaults.global.defaultFontColor = '#777';
+    
+        let massPopChart = new Chart(myChart1, {
+          type:'doughnut', 
+          data:{
+            labels:['TA','ASY', 'NAP', 'ATA'],
+            datasets:[{
+              label:'Population',
+              data:[
+                5,
+                54,
+                22,
+                19
+              ],
+              //backgroundColor:'green',
+              backgroundColor:[
+                '#6930C3',
+                '#F37121',
+                '#C0E218',
+                '#C70039'
+              ],
+              borderWidth:1,
+              borderColor: 'white',
+              hoverBorderWidth:1.25,
+              hoverBorderColor:'#40394A',
+              
+            }]
+          },
+          options:{
+            responsive: true,
+            maintainAspectRatio: false,
+            title:{
+              display:true,
+              text:'Types of chest pain',
+              fontSize:25,
+              fontColor:'#222831'
+            },
+            legend:{
+              display:true,
+              position:'right',
+              labels:{
+                fontColor:'#000'
+              }
+            },
+            layout:{
+              padding:{
+                left:50,
+                right:0,
+                bottom:0,
+                top:0
+              }
+            },
+            tooltips:{
+              enabled:true
+            }
+          }
+        });
+      </script> 
+    
+</body>
+</html>
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="/add-user" class="border-shadow">
+                    <span class="text-gradient">New patient <i class="fas fa-user"></i></span>
+                </a>
+            </div>
+           
+    
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Sl.no</th>
+                            <th>Age</th>
+                            <th>Sex</th>
+                            <th>ChestPainType</th>
+                            <th>RestingBP</th>
+                            <th>Cholesterol</th>
+                            <th>FastingBS</th>
+                            <th>RestingECG</th>
+                            <th>MaxHR</th>
+                            <th>ExerciseAngina</th>
+                            <th>Oldpeak</th>
+                            <th>ST_Slope</th>
+                            <th>HeartDisease</th>
+                            <!-- <th>Status</th> -->
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- include('include/_show') %>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
+<!-- /Main Site -->
+
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
